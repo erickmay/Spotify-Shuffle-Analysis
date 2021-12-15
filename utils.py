@@ -25,6 +25,7 @@ def create_value_counts_table(songs_df):
 def outer_join(unique_songs_df, playlist_df):
     tracks_df = unique_songs_df.merge(playlist_df, on="master_metadata_track_name", how="outer")
     tracks_df["isInPlaylist"].fillna(0, inplace=True)
+    tracks_df["counts"].fillna(0, inplace=True)
     tracks_df.to_csv("tracks.csv")
 
     return tracks_df
